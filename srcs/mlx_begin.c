@@ -49,26 +49,26 @@ void			init_rt(t_rt *e)
     e->scene.obj[0].color = c_color(180, 190, 200);
     e->scene.obj[0].pos = vec_new3(400, 400, 1000);
 	e->scene.obj[0].r = 200;
-	e->scene.obj[0].mat.diff = 0.5;
+	e->scene.obj[0].mat.diff = 0.1;
 
     e->scene.obj[1].type = PLANE;
     e->scene.obj[1].color = c_color(200, 200, 100);
     e->scene.obj[1].pos = vec_new3(400, 400, 900);
 	e->scene.obj[1].vector = vec_norme3(vec_new3(0, 0, -1));
-	e->scene.obj[1].mat.diff = 1;
+	e->scene.obj[1].mat.diff = 0.4;
 
     e->scene.obj[2].type = PLANE;
     e->scene.obj[2].color = c_color(255, 200, 0);
     e->scene.obj[2].pos = vec_new3(900, -300, 0);
     e->scene.obj[2].vector = vec_norme3(vec_new3(0, 1, 0));
-	e->scene.obj[2].mat.diff = 0.5;
+	e->scene.obj[2].mat.diff = 0.4;
 
     e->scene.obj[3].type = CYLINDER;
     e->scene.obj[3].r = 30;
     e->scene.obj[3].color = c_color(5, 20, 100);
     e->scene.obj[3].pos = vec_new3(500, 400, 300);
 	e->scene.obj[3].vector = vec_norme3(vec_new3(0.5, 1, 0));
-	e->scene.obj[3].mat.diff = 0.5;
+	e->scene.obj[3].mat.diff = 0.4;
 
 	e->scene.obj[4].type = CONE;
 	//k is for angle
@@ -76,7 +76,7 @@ void			init_rt(t_rt *e)
 	e->scene.obj[4].color = c_color(100, 15, 100);
 	e->scene.obj[4].pos = vec_new3(600, 400, 300);
     e->scene.obj[4].vector = vec_norme3(vec_new3(1, 0.5, 0));
-	e->scene.obj[4].mat.diff = 0.5;
+	e->scene.obj[4].mat.diff = 0.4;
 
     e->scene.nbr_obj = 5;
     e->scene.obj[5].type = END;
@@ -84,16 +84,16 @@ void			init_rt(t_rt *e)
 
 	e->scene.lights[0].ray.pos = vec_new3(800, 1200, 0);
 	e->scene.lights[0].color = c_color(255, 000, 000);
-	e->scene.lights[0].intensity = 0.5;
+	e->scene.lights[0].intensity = 0.1;
 	e->scene.lights[0].is_init = 0;
 
 
-	e->scene.lights[1].ray = c_ray(vec_new3(400, 400, -300), vec_new3(0, 0, 0));
+	e->scene.lights[1].ray = c_ray(vec_new3(-100, 400, -300), vec_new3(0, 0, 0));
 	e->scene.lights[1].color = c_color(255, 000, 000);
 	e->scene.lights[1].intensity = 0.4;
 	e->scene.lights[1].is_init = 0;
 
-	e->scene.ambient = 0.3;
+	e->scene.ambient = 0.2;
 	e->scene.nbr_light = 2;
 	//e->scene.lights[1] = END;
 
@@ -104,7 +104,6 @@ void			init_rt(t_rt *e)
     e->scene.cam.focus_point.x = 401;
 	e->scene.cam.focus_point.y = 401;
     e->scene.cam.focus_point.z = 0;
-    
 	//if (!(e->scene.obj = (t_obj *)malloc(sizeof(t_obj) * MAXOBJ)))
     //   exit(42);
     //if (!(e->scene.lights = (t_light *)malloc(sizeof(t_light) * MAXLIGHT)))
