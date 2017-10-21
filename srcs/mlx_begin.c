@@ -23,7 +23,7 @@ void			ft_start_rt(t_rt *e)
 	//	exit(0);
 	e->mlx.window = mlx_new_window(e->mlx.init, e->file.larg, e->file.haut, "RTV1");
 	e->mlx.image = mlx_new_image(e->mlx.init, e->file.larg, e->file.haut);
-    e->mlx.data = mlx_get_data_addr(e->mlx.image, &e->mlx.bpp, 
+    e->mlx.data = mlx_get_data_addr(e->mlx.image, &e->mlx.bpp,
         &e->mlx.size_l, &e->mlx.endian);
     frame(e);
     mlx_put_image_to_window(INIT, WIN, IMG, 0, 0);
@@ -44,7 +44,7 @@ void			init_rt(t_rt *e)
     e->file.aliasing = 1;
     e->file.reso = calcul_res(e, 400000);
 	e->file.reso_buff = e->file.reso;
-    
+
     e->scene.obj[0].type = SPHERE;
     e->scene.obj[0].color = c_color(180, 190, 200);
     e->scene.obj[0].pos = vec_new3(400, 400, 1000);
@@ -80,7 +80,7 @@ void			init_rt(t_rt *e)
 
     e->scene.nbr_obj = 5;
     e->scene.obj[5].type = END;
-	
+
 
 	e->scene.lights[0].ray.pos = vec_new3(800, 1200, 0);
 	e->scene.lights[0].color = c_color(255, 000, 000);

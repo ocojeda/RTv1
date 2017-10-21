@@ -10,6 +10,15 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+# include <libxml/parser.h>
+# include <libxml/tree.h>
+# include <libxml/xmlIO.h>
+# include <libxml/xinclude.h>
+# include <libxml/valid.h>
+# include <libxml/xmlschemas.h>
+# include <libxml/xmlstring.h>
+# include <libxml/xmlreader.h>
+
 # define END 0
 # define CONE 1
 # define PLANE 2
@@ -322,5 +331,11 @@ t_vec3				cylinder_norm(t_obj obj, t_vec3 poi);
 
 float		intensity_obj(t_rt *e, t_vec3 poi, t_obj obj, t_light light);
 float		diff_intensity(t_obj obj, float dot);
+
+/*
+** Parser
+*/
+
+void		parse(t_rt *e, int argc, char **argv);
 
 #endif

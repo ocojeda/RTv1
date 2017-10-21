@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/10/21 17:42:39 by bbeldame          #+#    #+#              #
+#    Updated: 2017/10/21 18:23:00 by bbeldame         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 PROJECT		=	RTV1
 NAME		=	rtv1
 OBJDIR		=	objs/
@@ -14,15 +26,20 @@ SRC			=	main.c \
 				cylinder.c \
 				cone.c \
 				normal.c \
-				intensity.c 
+				intensity.c \
+				parsing/parse.c
 MINILIBX	=	libs/minilibx/libmlx.a
 LIBFT		=	libs/libft/libft.a
 LIBVEC		=	libs/libvec/libvec.a
+LIBXML		=	`xml2-config --libs`
+LIBXML_H	=	`xml2-config --cflags`
+VPATH		=	$(SRCDIR):$(SRCDIR)parsing
 
 OBJ			=	$(addprefix $(OBJDIR),$(SRC:.c=.o))
+OBJ			:=	$(notdir $(OBJ))
 CC			=	gcc
 INC 		=	includes
-CFLAGS		=	-Wall -Werror -Wextra -I includes/ -I libs/libft/includes/ -I libs/libvec/includes/
+CFLAGS		=	-Wall -Werror -I includes/ -I libs/libft/includes/ -I libs/libvec/includes/ $(LIBXML_H) # ATTENTION A REMETTRE LE FLAG DE WEXTRA
 MLXF		=	-framework OpenGL -framework AppKit -lxml2
 WHITE		=	\033[7;49;39m
 BLUE		=	\033[7;49;34m
@@ -38,7 +55,7 @@ all: mlx lib vec $(NAME)
 $(NAME): $(MINILIBX) $(LIBFT) $(OBJDIR) $(OBJ)
 	@printf "\r$(GREEN)[$(PROJECT)] Obj compilation done.                                                        \n"
 	@printf "$(YELLOW)[$(PROJECT)] Compiling $(NAME)..."
-	@$(CC) $(CFLAGS) $(MLXF) -o $(NAME) $(OBJ) $(MINILIBX) $(LIBFT) $(LIBVEC)
+	@$(CC) $(CFLAGS) $(MLXF) -o $(NAME) $(OBJ) $(MINILIBX) $(LIBFT) $(LIBVEC) $(LIBXML)
 	@printf "\r$(GREEN)[$(PROJECT)] Compilation done.                          \n$(NO_COLOR)"
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
@@ -79,5 +96,8 @@ fclean:
 	@printf "\r$(GREEN)[$(PROJECT)] $(NAME) removed.                                               \n$(NO_COLOR)"
 
 re: fclean all
+
+norme:
+	@norminette srcs includes
 
 .PHONY: all clean fclean re
