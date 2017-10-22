@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 
-<scene>
-	<screen width="800" height="800" />
-
-	<ambiant intensity="0.2"/>
-
+<scene width="1300" height="1300" ambient="0.2">
 	<lights>
 		<light intensity="0.1">
 		    <pos x="800" y="1200" z="0"/>
@@ -16,10 +12,10 @@
 		</light>
 	</lights>
 
-	<cam>
+	<camera>
 		<pos x="400" y="400" z="-2000"/>
-		<focux x="401" y="401" z="0"/>
-	</cam>
+		<dir x="401" y="401" z="0"/>
+	</camera>
 
 	<objects>
 		<plane shine="0.4">
@@ -34,7 +30,7 @@
 			<color r="255" g="200" b="0"/>
 		</plane>
 
-		<sphere radius="200" shine="0.1">>
+		<sphere radius="200" shine="0.1">
 			<pos x="400" y="400" z="1000"/>
 			<color r="180" g="190" b="200"/>
 		</sphere>

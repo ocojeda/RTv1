@@ -96,6 +96,8 @@
 # define DIST_MIN -80000
 # define EPSILON 1e-7
 
+# define VALIDATOR_XSD "validator.xsd"
+
 typedef struct		s_ray
 {
 	t_vec3			pos;
@@ -337,5 +339,6 @@ float		diff_intensity(t_obj obj, float dot);
 */
 
 void		parse(t_rt *e, int argc, char **argv);
+void		check_doc(xmlDocPtr	doc);
 
 #endif

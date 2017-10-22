@@ -1,21 +1,5 @@
 #include "rtv1.h"
 
-int				calcul_res(t_rt *e, int limit)
-{
-	int res;
-	int air;
-
-	air = e->file.larg * e->file.haut;
-    res = 1;
-    limit /= 2;
-	//if (ALIASING == 2) antialiasing on
-    //	limit *= 2;
-    //while ((air / res) > limit)
-	while ((air / res) > limit)
-		res++;
-	return (res);
-}
-
 void			ft_start_rt(t_rt *e)
 {
 //	e->gtk.started = 1;
@@ -39,11 +23,6 @@ void			ft_start_rt(t_rt *e)
 void			init_rt(t_rt *e)
 {
     e->mlx.init = mlx_init();
-    e->file.larg = 800;
-    e->file.haut= 800;
-    e->file.aliasing = 1;
-    e->file.reso = calcul_res(e, 400000);
-	e->file.reso_buff = e->file.reso;
 
     e->scene.obj[0].type = SPHERE;
     e->scene.obj[0].color = c_color(180, 190, 200);

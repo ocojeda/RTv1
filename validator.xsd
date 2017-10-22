@@ -15,6 +15,13 @@
 		</xsd:restriction>
 	</xsd:simpleType>
 
+	<xsd:simpleType name="int4000">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="500" />
+			<xsd:maxInclusive value="4000" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
 	<xsd:element name="color">
 		<xsd:complexType>
 			<xsd:simpleContent>
@@ -115,9 +122,7 @@
 	<xsd:element name="objects">
 		<xsd:complexType>
 			<xsd:choice maxOccurs="unbounded" minOccurs="1">
-				<xsd:element ref="cone" minOccurs="0"/>
 				<xsd:element ref="sphere" minOccurs="0"/>
-				<xsd:element ref="cylinder" minOccurs="0"/>
 				<xsd:element ref="plane" minOccurs="0"/>
 			</xsd:choice>
 		</xsd:complexType>
@@ -130,7 +135,9 @@
 				<xsd:element ref="lights" minOccurs="1" maxOccurs="1"/>
 				<xsd:element ref="objects" minOccurs="1" maxOccurs="1"/>
 			</xsd:choice>
-			<xsd:attribute type="xsd:float" name="ambient"/>
+			<xsd:attribute type="xsd:float" name="ambient" use="required" />
+			<xsd:attribute type="int4000" name="width" use="required" />
+			<xsd:attribute type="int4000" name="height" use="required" />
 		</xsd:complexType>
 	</xsd:element>
 </xsd:schema>

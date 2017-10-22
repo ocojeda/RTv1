@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/21 17:42:39 by bbeldame          #+#    #+#              #
-#    Updated: 2017/10/21 18:23:00 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/10/22 19:07:10 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC			=	main.c \
 				cone.c \
 				normal.c \
 				intensity.c \
-				parsing/parse.c
+				parsing/parse.c \
+				parsing/checks.c
 MINILIBX	=	libs/minilibx/libmlx.a
 LIBFT		=	libs/libft/libft.a
 LIBVEC		=	libs/libvec/libvec.a
@@ -35,11 +36,12 @@ LIBXML		=	`xml2-config --libs`
 LIBXML_H	=	`xml2-config --cflags`
 VPATH		=	$(SRCDIR):$(SRCDIR)parsing
 
-OBJ			=	$(addprefix $(OBJDIR),$(SRC:.c=.o))
+OBJ			=	$(SRC:.c=.o)
 OBJ			:=	$(notdir $(OBJ))
+OBJ			:=	$(addprefix $(OBJDIR), $(OBJ))
 CC			=	gcc
 INC 		=	includes
-CFLAGS		=	-Wall -Werror -I includes/ -I libs/libft/includes/ -I libs/libvec/includes/ $(LIBXML_H) # ATTENTION A REMETTRE LE FLAG DE WEXTRA
+CFLAGS		=	-Wall -Werror -g -I includes/ -I libs/libft/includes/ -I libs/libvec/includes/ $(LIBXML_H) # ATTENTION A REMETTRE LE FLAG DE WEXTRA
 MLXF		=	-framework OpenGL -framework AppKit -lxml2
 WHITE		=	\033[7;49;39m
 BLUE		=	\033[7;49;34m
@@ -58,7 +60,7 @@ $(NAME): $(MINILIBX) $(LIBFT) $(OBJDIR) $(OBJ)
 	@$(CC) $(CFLAGS) $(MLXF) -o $(NAME) $(OBJ) $(MINILIBX) $(LIBFT) $(LIBVEC) $(LIBXML)
 	@printf "\r$(GREEN)[$(PROJECT)] Compilation done.                          \n$(NO_COLOR)"
 
-$(OBJDIR)%.o: $(SRCDIR)%.c
+$(OBJDIR)%.o: %.c
 	@printf "$(YELLOW)\r[$(PROJECT)] Compiling $< to $@                                                          \r"
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
