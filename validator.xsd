@@ -17,7 +17,7 @@
 
 	<xsd:simpleType name="int4000">
 		<xsd:restriction base="xsd:int">
-			<xsd:minInclusive value="500" />
+			<xsd:minInclusive value="300" />
 			<xsd:maxInclusive value="4000" />
 		</xsd:restriction>
 	</xsd:simpleType>

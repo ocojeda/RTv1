@@ -340,5 +340,7 @@ float		diff_intensity(t_obj obj, float dot);
 
 void		parse(t_rt *e, int argc, char **argv);
 void		check_doc(xmlDocPtr	doc);
+void		get_nodes_by_name(xmlNodePtr cur, char *node_name, t_list **lst);
+void		parse_objects(t_rt *e, xmlNodePtr node);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 17:40:51 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/22 19:01:19 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/22 19:36:53 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void			parse(t_rt *e, int ac, char **av)
 	check_doc(doc);
 	root = xmlDocGetRootElement(doc);
 	parse_scene(e, root);
+	parse_objects(e, root);
 	xmlFreeDoc(doc);
 	xmlCleanupParser();
 }

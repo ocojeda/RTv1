@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 
-<scene width="1300" height="1300" ambient="0.2">
+<scene width="400" height="400" ambient="0.2">
 	<lights>
 		<light intensity="0.1">
 		    <pos x="800" y="1200" z="0"/>
