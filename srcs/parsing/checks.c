@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 18:29:37 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 00:25:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 00:30:21 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void					check_doc(xmlDocPtr doc)
 		xmlSchemaFreeValidCtxt(ptr_validctxt);
 	if (vl_return != 0)
 		err_found("Bad XML format");
+	xmlSchemaFree(ptr_schema);
 }
