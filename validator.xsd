@@ -119,11 +119,37 @@
 		</xsd:complexType>
 	</xsd:element>
 
+	<xsd:element name="cylinder">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="pos" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="color" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="normal" minOccurs="1" maxOccurs="1"/>
+			</xsd:choice>
+			<xsd:attribute type="xsd:float" name="radius" use="required"/>
+			<xsd:attribute type="xsd:float" name="shine" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="cone">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="pos" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="color" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="normal" minOccurs="1" maxOccurs="1"/>
+			</xsd:choice>
+			<xsd:attribute type="xsd:float" name="angle" use="required"/>
+			<xsd:attribute type="xsd:float" name="shine" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="objects">
 		<xsd:complexType>
 			<xsd:choice maxOccurs="unbounded" minOccurs="1">
 				<xsd:element ref="sphere" minOccurs="0"/>
 				<xsd:element ref="plane" minOccurs="0"/>
+				<xsd:element ref="cylinder" minOccurs="0"/>
+				<xsd:element ref="cone" minOccurs="0"/>
 			</xsd:choice>
 		</xsd:complexType>
 	</xsd:element>

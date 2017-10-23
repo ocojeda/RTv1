@@ -342,5 +342,8 @@ void		parse(t_rt *e, int argc, char **argv);
 void		check_doc(xmlDocPtr	doc);
 void		get_nodes_by_name(xmlNodePtr cur, char *node_name, t_list **lst);
 void		parse_objects(t_rt *e, xmlNodePtr node);
+t_vec3		get_vec_from_node(xmlNodePtr node);
+t_color		parse_color(xmlNodePtr node);
+xmlNodePtr	has_child(xmlNodePtr a_node, char *attr);
 
 #endif
