@@ -13,8 +13,8 @@
 	</lights>
 
 	<camera>
-		<pos x="400" y="400" z="-2000"/>
-		<dir x="401" y="401" z="0"/>
+		<pos x="0" y="0" z="-2000"/>
+		<dir x="500" y="500" z="0"/>
 	</camera>
 
 	<objects>

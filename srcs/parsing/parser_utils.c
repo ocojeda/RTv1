@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:25:44 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/23 21:29:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 00:25:54 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_vec3			get_vec_from_node(xmlNodePtr node)
 	return (new_vec);
 }
 
-void		get_nodes_by_name(xmlNodePtr cur, char *node_name, t_list **lst)
+void			get_nodes_by_name(xmlNodePtr cur, char *node_name, t_list **lst)
 {
 	t_list	*new_lst;
 

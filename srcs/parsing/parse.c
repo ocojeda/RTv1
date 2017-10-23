@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 17:40:51 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/22 19:36:53 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 00:24:28 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int		calcul_res(t_rt *e, int limit)
 	int air;
 
 	air = e->file.larg * e->file.haut;
-    res = 1;
-    limit /= 2;
+	res = 1;
+	limit /= 2;
 	while ((air / res) > limit)
 		res++;
 	return (res);
@@ -39,8 +39,8 @@ static void		parse_scene(t_rt *e, xmlNodePtr node)
 	xmlFree(val);
 	val = xmlGetProp(node, (xmlChar*)"height");
 	e->file.haut = ft_atoi((char*)val);
-    e->file.aliasing = 1;
-    e->file.reso = calcul_res(e, 400000);
+	e->file.aliasing = 1;
+	e->file.reso = calcul_res(e, 400000);
 	e->file.reso_buff = e->file.reso;
 	xmlFree(val);
 }
@@ -49,18 +49,26 @@ void			parse(t_rt *e, int ac, char **av)
 {
 	xmlDocPtr	doc;
 	xmlNodePtr	root;
+	t_list		*lst;
 
-	// debug
-	//if (ac != 2 || ft_strncmp(ft_strrev(av[1]), "lmx.", 4) != 0)
-	//	err_found("usage: rtv1 input_map.xml");
-	// doc = xmlParseFile(ft_strrev(av[1]));
-	doc = xmlParseFile("scenes/01.xml"); // debug
+	lst = NULL;
+	if (ac != 2 || ft_strncmp(ft_strrev(av[1]), "lmx.", 4) != 0)
+		err_found("usage: rtv1 input_map.xml");
+	doc = xmlParseFile(ft_strrev(av[1]));
 	if (doc == NULL)
 		err_found("Wrong xml file");
 	check_doc(doc);
 	root = xmlDocGetRootElement(doc);
 	parse_scene(e, root);
-	parse_objects(e, root);
+	get_nodes_by_name(root, "objects", &lst);
+	parse_objects(e, lst);
+	ft_lstfree(&lst);
+	get_nodes_by_name(root, "camera", &lst);
+	parse_camera(e, (xmlNodePtr)(lst->content));
+	ft_lstfree(&lst);
+	get_nodes_by_name(root, "light", &lst);
+	parse_lights(e, lst);
+	ft_lstfree(&lst);
 	xmlFreeDoc(doc);
 	xmlCleanupParser();
 }

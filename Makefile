@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/21 17:42:39 by bbeldame          #+#    #+#              #
-#    Updated: 2017/10/22 19:44:27 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/10/24 00:22:17 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRC			=	main.c \
 				parsing/parse.c \
 				parsing/checks.c \
 				parsing/parser_utils.c \
-				parsing/parse_objects.c
+				parsing/parse_objects.c \
+				parsing/parse_camera.c \
+				parsing/parse_lights.c
 MINILIBX	=	libs/minilibx/libmlx.a
 LIBFT		=	libs/libft/libft.a
 LIBVEC		=	libs/libvec/libvec.a
@@ -43,7 +45,7 @@ OBJ			:=	$(notdir $(OBJ))
 OBJ			:=	$(addprefix $(OBJDIR), $(OBJ))
 CC			=	gcc
 INC 		=	includes
-CFLAGS		=	-Wall -Werror -g -I includes/ -I libs/libft/includes/ -I libs/libvec/includes/ $(LIBXML_H) # ATTENTION A REMETTRE LE FLAG DE WEXTRA
+CFLAGS		=	-Wall -Wextra -Werror -g -I includes/ -I libs/libft/includes/ -I libs/libvec/includes/ $(LIBXML_H)
 MLXF		=	-framework OpenGL -framework AppKit -lxml2
 WHITE		=	\033[7;49;39m
 BLUE		=	\033[7;49;34m

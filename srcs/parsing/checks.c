@@ -6,13 +6,13 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 18:29:37 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/22 17:20:47 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 00:25:41 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static	xmlSchemaPtr	get_xsd(void)
+static xmlSchemaPtr		get_xsd(void)
 {
 	xmlSchemaPtr			ptr_schema;
 	xmlSchemaParserCtxtPtr	ptr_ctxt;
@@ -26,7 +26,7 @@ static	xmlSchemaPtr	get_xsd(void)
 	return (ptr_schema);
 }
 
-void	check_doc(xmlDocPtr	doc)
+void					check_doc(xmlDocPtr doc)
 {
 	xmlSchemaPtr			ptr_schema;
 	xmlSchemaValidCtxtPtr	ptr_validctxt;

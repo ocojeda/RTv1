@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:37:02 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/23 22:23:35 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 00:24:45 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		set_attrs(t_obj *obj, xmlNodePtr node)
 		obj->k = ft_atof((char *)val);
 }
 
-static void		parse_obj_node(t_obj *obj, xmlNodePtr node, t_rt *e)
+static void		parse_obj_node(t_obj *obj, xmlNodePtr node)
 {
 	xmlNodePtr	child;
 
@@ -37,9 +37,9 @@ static void		parse_obj_node(t_obj *obj, xmlNodePtr node, t_rt *e)
 		obj->color = parse_color(child);
 }
 
-static t_obj	dispatch_obj(xmlNodePtr node, t_rt *e, int i)
+static t_obj	dispatch_obj(xmlNodePtr node)
 {
-	t_obj 		new_obj;
+	t_obj		new_obj;
 
 	if (xmlStrEqual(node->name, (xmlChar *)"sphere"))
 		new_obj.type = SPHERE;
@@ -49,7 +49,7 @@ static t_obj	dispatch_obj(xmlNodePtr node, t_rt *e, int i)
 		new_obj.type = CONE;
 	else if (xmlStrEqual(node->name, (xmlChar *)"cylinder"))
 		new_obj.type = CYLINDER;
-	parse_obj_node(&new_obj, node, e);
+	parse_obj_node(&new_obj, node);
 	return (new_obj);
 }
 
@@ -63,32 +63,29 @@ static void		create_obj(t_rt *e, t_list *lst)
 		return ;
 	while (lst)
 	{
-		e->scene.obj[i] = dispatch_obj((xmlNodePtr)lst->content, e, i);
+		e->scene.obj[i] = dispatch_obj((xmlNodePtr)lst->content);
 		lst = lst->next;
 		i++;
 	}
 	ft_lstfree(&lst);
 }
 
-void			parse_objects(t_rt *e, xmlNodePtr node)
+void			parse_objects(t_rt *e, t_list *lst)
 {
-	t_list		*lst;
 	t_list		*lst2;
-	t_list		*new;
+	t_list		*newlst;
 	xmlNodePtr	temp;
 
-	lst = NULL;
 	lst2 = NULL;
 	temp = NULL;
-	get_nodes_by_name(node, "objects", &lst);
 	if (!lst)
 		return ;
 	temp = ((xmlNodePtr)lst->content)->children;
 	while (temp)
 	{
 		ft_putendl((char *)temp->name);
-		new = ft_lstnew((void *)temp, sizeof(*temp));
-		ft_lstpush(&lst2, new);
+		newlst = ft_lstnew((void *)temp, sizeof(*temp));
+		ft_lstpush(&lst2, newlst);
 		temp = temp->next;
 	}
 	create_obj(e, lst2);
