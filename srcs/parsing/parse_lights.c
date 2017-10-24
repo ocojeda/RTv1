@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 00:14:08 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 00:25:49 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:43:08 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ t_light			parse_light(xmlNodePtr node)
 
 	light.is_init = 0;
 	if ((val = xmlGetProp(node, (xmlChar *)"intensity")))
+	{
 		light.intensity = atof((char *)val);
+		xmlFree(val);
+	}
 	if ((child = has_child(node, "pos")))
 		light.ray.pos = get_vec_from_node(child);
 	if ((child = has_child(node, "color")))

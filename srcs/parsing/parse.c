@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 17:40:51 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 00:24:28 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 22:05:49 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ void			parse(t_rt *e, int ac, char **av)
 	t_list		*lst;
 
 	lst = NULL;
-	if (ac != 2 || ft_strncmp(ft_strrev(av[1]), "lmx.", 4) != 0)
-		err_found("usage: rtv1 input_map.xml");
-	doc = xmlParseFile(ft_strrev(av[1]));
+//	if (ac != 2 || ft_strncmp(ft_strrev(av[1]), "lmx.", 4) != 0)
+//		err_found("usage: rtv1 input_map.xml");
+//	doc = xmlParseFile(ft_strrev(av[1]));
+	(void)av;
+	(void)ac;
+	doc = xmlParseFile("scenes/01.xml");
 	if (doc == NULL)
 		err_found("Wrong xml file");
 	check_doc(doc);

@@ -33,12 +33,12 @@ int				keypress(int keycode, void *param)
 	}
 	if (keycode == KEY_RIGHT)
 	{
-		e->scene.cam.focus_point.x += 10;
+		e->scene.cam.focus_point.x -= 10;
 		frame(e);
 	}
 	if (keycode == KEY_LEFT)
 	{
-		e->scene.cam.focus_point.x -= 10;
+		e->scene.cam.focus_point.x += 10;
 		frame(e);
 	}
 	if (keycode == KEY_PLUS)

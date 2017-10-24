@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:37:02 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 00:24:45 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 22:19:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@ static void		set_attrs(t_obj *obj, xmlNodePtr node)
 	xmlChar		*val;
 
 	if ((val = xmlGetProp(node, BAD_CAST"radius")))
+	{
 		obj->r = ft_atof((char *)val);
+		xmlFree(val);
+	}
 	if ((val = xmlGetProp(node, BAD_CAST"shine")))
+	{
 		obj->mat.diff = ft_atof((char *)val);
+		xmlFree(val);
+	}
 	if ((val = xmlGetProp(node, BAD_CAST"angle")))
+	{
 		obj->k = ft_atof((char *)val);
+		xmlFree(val);
+	}
 }
 
 static void		parse_obj_node(t_obj *obj, xmlNodePtr node)
@@ -67,7 +76,6 @@ static void		create_obj(t_rt *e, t_list *lst)
 		lst = lst->next;
 		i++;
 	}
-	ft_lstfree(&lst);
 }
 
 void			parse_objects(t_rt *e, t_list *lst)
@@ -83,10 +91,10 @@ void			parse_objects(t_rt *e, t_list *lst)
 	temp = ((xmlNodePtr)lst->content)->children;
 	while (temp)
 	{
-		ft_putendl((char *)temp->name);
 		newlst = ft_lstnew((void *)temp, sizeof(*temp));
 		ft_lstpush(&lst2, newlst);
 		temp = temp->next;
 	}
 	create_obj(e, lst2);
+	ft_lstfree(&lst2);
 }

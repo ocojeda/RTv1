@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:25:44 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 00:25:54 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/24 22:22:22 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,37 @@ xmlNodePtr		has_child(xmlNodePtr a_node, char *attr)
 
 t_color			parse_color(xmlNodePtr node)
 {
-	t_color color;
+	char		*str;
+	int			r;
+	int			g;
+	int			b;
 
-	color = c_color(
-		ft_atoi((char *)xmlGetProp(node, (xmlChar *)"r")),
-		ft_atoi((char *)xmlGetProp(node, (xmlChar *)"g")),
-		ft_atoi((char *)xmlGetProp(node, (xmlChar *)"b")));
-	return (color);
+	str = (char *)xmlGetProp(node, (xmlChar *)"r");
+	r = ft_atoi(str);
+	xmlFree(str);
+	str = (char *)xmlGetProp(node, (xmlChar *)"g");
+	g = ft_atoi(str);
+	xmlFree(str);
+	str = (char *)xmlGetProp(node, (xmlChar *)"b");
+	b = ft_atoi(str);
+	xmlFree(str);
+	return (c_color(r, g, b));
 }
 
 t_vec3			get_vec_from_node(xmlNodePtr node)
 {
 	t_vec3	new_vec;
-
-	new_vec.x = ft_atof((char *)(xmlGetProp(node, (xmlChar *)"x")));
-	new_vec.y = ft_atof((char *)(xmlGetProp(node, (xmlChar *)"y")));
-	new_vec.z = ft_atof((char *)(xmlGetProp(node, (xmlChar *)"z")));
+	char	*str;
+	
+	str = (char *)(xmlGetProp(node, (xmlChar *)"x"));
+	new_vec.x = ft_atof(str);
+	xmlFree(str);
+	str = (char *)(xmlGetProp(node, (xmlChar *)"y"));
+	new_vec.y = ft_atof(str);
+	xmlFree(str);
+	str = (char *)(xmlGetProp(node, (xmlChar *)"z"));
+	new_vec.z = ft_atof(str);
+	xmlFree(str);
 	return (new_vec);
 }
 
