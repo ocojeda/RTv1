@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rtv1.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/25 21:07:29 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/10/25 21:08:48 by bbeldame         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RTV1_H
 # define RTV1_H
 
@@ -139,20 +151,17 @@ typedef struct		s_camera
 
 typedef struct		s_matiere
 {
-	//t_checker		checker;
 	float			diff;
 	float			spec;
 	float			reflect;
 	float			refract;
 	float			reflex;
-	//t_texture		tex;
 	float			transparency;
 	float			absorbtion;
 	char			*coeff;
 	char			opacite;
 	int				sin;
 	int				perlin;
-	//t_texture		texture;
 }					t_matiere;
 
 typedef struct		s_obj
@@ -192,18 +201,10 @@ typedef struct		s_scene
 	t_camera		cam;
 	t_light			lights[MAXLIGHT];
 	t_obj			obj[MAXOBJ];
-//	t_texture		skybox;
-//	int				last;
 	float			ambient;
 	int				nbr_light;
 	int				nbr_obj;
-//	int				nbr_complex;
-//	char			nbr_tot;
 	int				id;
-//	int				supersampling;
-//	int				filters;
-//	int				selected;
-//	int				max_iter;
 }					t_scene;
 
 typedef struct		s_file
@@ -211,7 +212,6 @@ typedef struct		s_file
 	char			*path;
 	int				haut;
 	int				larg;
-//	int				fdp;
 	int				reso;
 	int				reso_buff;
 	int				aliasing;
@@ -231,8 +231,6 @@ typedef struct		s_mlx
 typedef struct		s_rt
 {
 	t_mlx			mlx;
-//	t_keys			keys;
-//	t_gtk			gtk;
 	t_scene			scene;
 	t_file			file;
 	t_mthread		thread;
@@ -267,85 +265,51 @@ typedef struct		s_calc
 	float			sqrtdisc;
 }					t_calc;
 
-/*
-* parsing fonctions
-*/
-void			ft_start_rt(t_rt *e);
-void			init_rt(t_rt *e);
-
-/*
-* multhread fonctions
-*/
-void			frame(t_rt *e);
-
-/*
-* color managing fonctions
-*/
-unsigned int	ret_colors(t_color colo);
-t_color			c_color(float r, float g, float b);
-t_color			color_mult(t_color color, float taux, float limit);
-
-/*
-*raytracing basic fonctions
-*/
-t_color			raytrace(int x, int y, t_rt *e);
-t_ray			ray_init(t_rt *e, int x, int y);
-
-t_ray			c_ray(t_vec3 i, t_vec3 j);
-
-/*
-*mlx relative fonctions
-*/
-void			pixel_to_image(int x, int y, t_rt *e, int color);
-int				keypress(int keycode, void *param);
-
-/*
-* intersect fonctions
-*/
-
-float			intersect_obj(t_ray ray, t_obj *obj);
-float			intersect_sphere(t_ray ray, t_obj *sphere);
-float			intersect_plane(t_ray ray, t_obj *plane);
-float			intersect_cylinder(t_ray ray, t_obj *cyl);
-float			intersect_cone(t_ray ray, t_obj *cone);
-t_vec3			plane_norm(t_obj plane);
-float			get_res_of_quadratic(t_calc *op, t_obj *obj);
-
-/*
-* math aux fonctions
-*/
-float			p(float x);
-float			get_length(t_vec3 v);
-
-/*
-* fonction pour les normales
-*/
+void				ft_start_rt(t_rt *e);
+void				init_rt(t_rt *e);
+void				frame(t_rt *e);
+unsigned int		ret_colors(t_color colo);
+t_color				c_color(float r, float g, float b);
+t_color				color_mult(t_color color, float taux, float limit);
+t_color				raytrace(int x, int y, t_rt *e);
+t_ray				ray_init(t_rt *e, int x, int y);
+t_ray				c_ray(t_vec3 i, t_vec3 j);
+void				pixel_to_image(int x, int y, t_rt *e, int color);
+int					keypress(int keycode, void *param);
+float				intersect_obj(t_ray ray, t_obj *obj);
+float				intersect_sphere(t_ray ray, t_obj *sphere);
+float				intersect_plane(t_ray ray, t_obj *plane);
+float				intersect_cylinder(t_ray ray, t_obj *cyl);
+float				intersect_cone(t_ray ray, t_obj *cone);
+t_vec3				plane_norm(t_obj plane);
+float				get_res_of_quadratic(t_calc *op, t_obj *obj);
+float				p(float x);
+float				get_length(t_vec3 v);
 t_vec3				color_norm(t_obj obj, t_vec3 poi, t_vec3 light);
 t_vec3				object_norm(t_obj obj, t_vec3 poi);
 t_vec3				cone_norm(t_obj obj, t_vec3 poi);
 t_vec3				plane_norm(t_obj obj);
 t_vec3				sphere_norm(t_obj obj, t_vec3 poi);
 t_vec3				cylinder_norm(t_obj obj, t_vec3 poi);
-
-/*
-*	que le lumiere soit
-*/
-
-float		intensity_obj(t_rt *e, t_vec3 poi, t_obj obj, t_light light);
-float		diff_intensity(t_obj obj, float dot);
+float				intensity_obj(t_rt *e, t_vec3 poi,
+						t_obj obj, t_light light);
+float				diff_intensity(t_obj obj, float dot);
+t_rt				**launch_thread(t_rt *e);
+void				*drawline(void *arg);
 
 /*
 ** Parser
 */
 
-void		parse(t_rt *e, int argc, char **argv);
-void		check_doc(xmlDocPtr	doc);
-void		get_nodes_by_name(xmlNodePtr cur, char *node_name, t_list **lst);
-void		parse_objects(t_rt *e, t_list *lst);
-t_vec3		get_vec_from_node(xmlNodePtr node);
-t_color		parse_color(xmlNodePtr node);
-xmlNodePtr	has_child(xmlNodePtr a_node, char *attr);
-void		parse_camera(t_rt *e, xmlNodePtr node);
-void		parse_lights(t_rt *e, t_list *lst);
+void				parse(t_rt *e, int argc, char **argv);
+void				check_doc(xmlDocPtr	doc);
+void				get_nodes_by_name(xmlNodePtr cur,
+						char *node_name, t_list **lst);
+void				parse_objects(t_rt *e, t_list *lst);
+t_vec3				get_vec_from_node(xmlNodePtr node);
+t_color				parse_color(xmlNodePtr node);
+xmlNodePtr			has_child(xmlNodePtr a_node, char *attr);
+void				parse_camera(t_rt *e, xmlNodePtr node);
+void				parse_lights(t_rt *e, t_list *lst);
 
 #endif

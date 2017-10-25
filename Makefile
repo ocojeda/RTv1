@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/21 17:42:39 by bbeldame          #+#    #+#              #
-#    Updated: 2017/10/25 21:04:15 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/10/25 21:04:59 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,6 @@ fclean:
 re: fclean all
 
 norme:
-	@norminette srcs includes libs
+	@norminette srcs includes libs/libft libs/libvec
 
 .PHONY: all clean fclean re
