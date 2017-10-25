@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sphere.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/25 20:47:21 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/10/25 20:47:36 by bbeldame         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rtv1.h"
 
 float			get_res_of_quadratic(t_calc *op, t_obj *obj)
@@ -22,7 +34,7 @@ float			get_res_of_quadratic(t_calc *op, t_obj *obj)
 
 t_vec3			sphere_norm(t_obj obj, t_vec3 poi)
 {
-	t_vec3	norme;
+	t_vec3		norme;
 
 	norme = vec_norme3(vec_sub3(poi, obj.pos));
 	return (norme);

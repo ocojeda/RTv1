@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:25:44 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 22:22:22 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/25 20:21:13 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_vec3			get_vec_from_node(xmlNodePtr node)
 {
 	t_vec3	new_vec;
 	char	*str;
-	
+
 	str = (char *)(xmlGetProp(node, (xmlChar *)"x"));
 	new_vec.x = ft_atof(str);
 	xmlFree(str);

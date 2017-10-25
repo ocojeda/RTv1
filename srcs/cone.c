@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cone.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/25 20:21:38 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/10/25 20:23:05 by bbeldame         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rtv1.h"
 
 t_vec3			cone_norm(t_obj cone, t_vec3 poi)
@@ -11,12 +23,6 @@ t_vec3			cone_norm(t_obj cone, t_vec3 poi)
 	dot = vec_dot3(tmp, cone.vector);
 	project = vec_scale3(cone.vector, dot);
 	normal = vec_sub3(tmp, project);
-	/*if (cone.mat.sin == 1)
-	{
-		normal.x = normal.x;
-		normal.y = sin(normal.y) * 20;
-		normal.z = normal.z;
-	}*/
 	return (vec_norme3(normal));
 }
 
@@ -34,9 +40,5 @@ float			intersect_cone(t_ray ray, t_obj *cone)
 	op.b = 2 * (vec_dot3(ray.dir, x) - (1 + p(cone->k)) * dotdv * dotxv);
 	op.c = vec_dot3(x, x) - (1 + p(cone->k)) * p(dotxv);
 	op.eq = get_res_of_quadratic(&op, cone);
-	//if (op.eq == op.t0)
-	//	return (limit_dist(*cone, ray, op.eq, op.t1));
-	//else
-    //	return (limit_dist(*cone, ray, op.eq, op.t0));
-    return (op.eq);
+	return (op.eq);
 }

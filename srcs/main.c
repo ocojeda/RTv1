@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 23:41:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 21:53:59 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/25 20:40:07 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int		main(int argc, char **argv)
 	e.frame = 0;
 	parse(&e, argc, argv);
 	ft_start_rt(&e);
-	return 0;
+	return (0);
 }

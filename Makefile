@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/21 17:42:39 by bbeldame          #+#    #+#              #
-#    Updated: 2017/10/24 00:22:17 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/10/25 20:53:09 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC			=	main.c \
 				color.c \
 				ray.c \
 				frame.c \
+				frame_utils.c \
 				sphere.c \
 				plane.c \
 				cylinder.c \
@@ -104,6 +105,6 @@ fclean:
 re: fclean all
 
 norme:
-	@norminette srcs includes
+	@norminette srcs includes libs
 
 .PHONY: all clean fclean re

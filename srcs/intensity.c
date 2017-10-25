@@ -1,4 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   intensity.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/25 20:39:37 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/10/25 20:47:10 by bbeldame         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rtv1.h"
+
+float			get_length(t_vec3 v)
+{
+	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+}
 
 float			obj_isnt_in_shadow(t_rt *e, t_vec3 poi, t_light *light)
 {
@@ -23,7 +40,7 @@ float			obj_isnt_in_shadow(t_rt *e, t_vec3 poi, t_light *light)
 	return (opac);
 }
 
-float		intensity_obj(t_rt *e, t_vec3 poi, t_obj obj, t_light light)
+float			intensity_obj(t_rt *e, t_vec3 poi, t_obj obj, t_light light)
 {
 	float	intensity;
 	t_vec3	norm;
@@ -41,37 +58,19 @@ float		intensity_obj(t_rt *e, t_vec3 poi, t_obj obj, t_light light)
 		refl = vec_scale3(norm, 2 * dot);
 		refl = vec_sub3(light.ray.dir, refl);
 		intensity = vec_dot3(vec_scale3(light.ray.dir, -1), refl);
-		if(intensity < 0)
+		if (intensity < 0)
 			intensity = 0;
 		intensity = pow(intensity, (light.intensity)) * (obj.mat.diff);
 	}
 	return (intensity * transp + AMBIENT_LIGHT);
-/*
-float	intensity;
-t_vec3	norm;
-float	transp;
-float	dot;
-float	dist_to_light;
-
-intensity = 0;
-transp = 0;
-light.ray.dir = vec_norme3(vec_sub3(light.ray.pos, poi));
-norm = color_norm(obj, poi, vec_sub3(e->scene.cam.pos, poi));
-if ((dot = vec_dot3(light.ray.dir, norm)) > 0
-&& (transp = obj_isnt_in_shadow(e, poi, &light)))
-{
-	dist_to_light = get_length(light.ray.dir);
-	intensity += dot * 0.3 + (0.2 * dist_to_light / 100);
-}
-return (intensity * transp + AMBIENT_LIGHT);*/
 }
 
-float		diff_intensity(t_obj obj, float dot)
+float			diff_intensity(t_obj obj, float dot)
 {
 	float	intensity;
 
 	if (obj.mat.diff == 0)
 		return (0);
-	intensity = dot	* obj.mat.diff;
+	intensity = dot * obj.mat.diff;
 	return ((intensity < 0) ? 0 : intensity);
 }
