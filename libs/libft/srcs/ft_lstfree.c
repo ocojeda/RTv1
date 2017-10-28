@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/30 17:12:35 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/01 16:12:54 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/27 21:13:27 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void			ft_lstfree(t_list **lst)
 	{
 		ft_lstfree(&((*lst)->next));
 		free(*lst);
+		free((*lst)->content);
 		*lst = NULL;
 	}
 }

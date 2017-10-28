@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:37:02 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/24 22:19:24 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/28 16:20:30 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ static void		set_attrs(t_obj *obj, xmlNodePtr node)
 {
 	xmlChar		*val;
 
-	if ((val = xmlGetProp(node, BAD_CAST"radius")))
+	if ((val = xmlGetProp(node, (xmlChar *)"radius")))
 	{
 		obj->r = ft_atof((char *)val);
 		xmlFree(val);
 	}
-	if ((val = xmlGetProp(node, BAD_CAST"shine")))
+	if ((val = xmlGetProp(node, (xmlChar *)"shine")))
 	{
 		obj->mat.diff = ft_atof((char *)val);
 		xmlFree(val);
 	}
-	if ((val = xmlGetProp(node, BAD_CAST"angle")))
+	if ((val = xmlGetProp(node, (xmlChar *)"angle")))
 	{
 		obj->k = ft_atof((char *)val);
 		xmlFree(val);
