@@ -3,7 +3,7 @@
 <scene width="1000" height="1000" ambient="0.2">
 	<lights>
 		<light intensity="0.5">
-		    <pos x="-400" y="200" z="-100"/>
+		    <pos x="-800" y="200" z="-100"/>
 			<color r="255" g="0" b="0"/>
 		</light>
 	</lights>
@@ -24,12 +24,12 @@
 			<normal x="0" y="0" z="-1"/>
 			<color r="0" g="0" b="200"/>
 		</plane>
-		<cone angle="0.5" diff="1" spec="0.5">
+		<cone angle="0.5" diff="1" spec="0">
 			<pos x="-800" y="0" z="3000" />
 			<normal x="0.5" y="1" z="0"/>
 			<color r="255" g="255" b="100"/>
 		</cone>
-		<cylinder radius="150" diff="0.5" spec="0.5">
+		<cylinder radius="150" diff="0.5" spec="0">
 			<pos x="0" y="200" z="3000"/>
 			<normal x="-0.8" y="1" z="0"/>
 			<color r="0" g="200" b="0"/>
