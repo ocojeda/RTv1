@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 20:21:23 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/25 20:21:24 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/29 17:04:25 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ t_color			color_mult(t_color color, float taux, float limit)
 	t_color		new_color;
 
 	new_color = copy_color(color);
-	new_color.r = (color.r == 0 && taux > limit) ? 128 * taux : color.r * taux;
-	new_color.g = (color.g == 0 && taux > limit) ? 128 * taux : color.g * taux;
-	new_color.b = (color.b == 0 && taux > limit) ? 128 * taux : color.b * taux;
+	new_color.r = (color.r == 0 && taux > limit) ? 1 * taux : color.r * taux;
+	new_color.g = (color.g == 0 && taux > limit) ? 1 * taux : color.g * taux;
+	new_color.b = (color.b == 0 && taux > limit) ? 1 * taux : color.b * taux;
 	new_color.r = (new_color.r > 255) ? 255 : new_color.r;
 	new_color.g = (new_color.g > 255) ? 255 : new_color.g;
 	new_color.b = (new_color.b > 255) ? 255 : new_color.b;

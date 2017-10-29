@@ -6,11 +6,28 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 20:43:14 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/25 20:44:56 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/29 17:16:12 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+t_ray			get_reflected_ray(t_rt *e, t_ray rayon, t_vec3 poi)
+{
+	t_vec3		normale;
+	t_ray		ray;
+
+	ray.pos = poi;
+	normale = color_norm(e->scene.obj[e->scene.id], poi, e->scene.cam.pos);
+	ray.dir = vec_add3(vec_scale3(normale,
+		(-2 * vec_dot3(rayon.dir, normale))), rayon.dir);
+	return (ray);
+}
+
+float			get_length(t_vec3 v)
+{
+	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+}
 
 t_ray			c_ray(t_vec3 i, t_vec3 j)
 {

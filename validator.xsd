@@ -104,7 +104,8 @@
 				<xsd:element ref="normal" minOccurs="1" maxOccurs="1"/>
 				<xsd:element ref="color" minOccurs="1" maxOccurs="1"/>
 			</xsd:choice>
-			<xsd:attribute type="xsd:float" name="shine" use="required"/>
+			<xsd:attribute type="xsd:float" name="diff" use="required"/>
+			<xsd:attribute type="xsd:float" name="spec" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -115,7 +116,8 @@
 				<xsd:element ref="color" minOccurs="1" maxOccurs="1"/>
 			</xsd:choice>
 			<xsd:attribute type="xsd:float" name="radius" use="required"/>
-			<xsd:attribute type="xsd:float" name="shine" use="required"/>
+			<xsd:attribute type="xsd:float" name="diff" use="required"/>
+			<xsd:attribute type="xsd:float" name="spec" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -127,7 +129,8 @@
 				<xsd:element ref="normal" minOccurs="1" maxOccurs="1"/>
 			</xsd:choice>
 			<xsd:attribute type="xsd:float" name="radius" use="required"/>
-			<xsd:attribute type="xsd:float" name="shine" use="required"/>
+			<xsd:attribute type="xsd:float" name="diff" use="required"/>
+			<xsd:attribute type="xsd:float" name="spec" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -139,7 +142,8 @@
 				<xsd:element ref="normal" minOccurs="1" maxOccurs="1"/>
 			</xsd:choice>
 			<xsd:attribute type="xsd:float" name="angle" use="required"/>
-			<xsd:attribute type="xsd:float" name="shine" use="required"/>
+			<xsd:attribute type="xsd:float" name="diff" use="required"/>
+			<xsd:attribute type="xsd:float" name="spec" use="required"/>
 		</xsd:complexType>
 	</xsd:element>
 

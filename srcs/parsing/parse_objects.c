@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:37:02 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/28 16:20:30 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/29 17:24:32 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ static void		set_attrs(t_obj *obj, xmlNodePtr node)
 		obj->r = ft_atof((char *)val);
 		xmlFree(val);
 	}
-	if ((val = xmlGetProp(node, (xmlChar *)"shine")))
+	if ((val = xmlGetProp(node, (xmlChar *)"diff")))
 	{
 		obj->mat.diff = ft_atof((char *)val);
+		xmlFree(val);
+	}
+	if ((val = xmlGetProp(node, (xmlChar *)"spec")))
+	{
+		obj->mat.spec = ft_atof((char *)val);
 		xmlFree(val);
 	}
 	if ((val = xmlGetProp(node, (xmlChar *)"angle")))

@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 21:07:29 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/10/25 21:08:48 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/10/29 17:22:40 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,10 +292,11 @@ t_vec3				plane_norm(t_obj obj);
 t_vec3				sphere_norm(t_obj obj, t_vec3 poi);
 t_vec3				cylinder_norm(t_obj obj, t_vec3 poi);
 float				intensity_obj(t_rt *e, t_vec3 poi,
-						t_obj obj, t_light light);
-float				diff_intensity(t_obj obj, float dot, t_light light);
+						t_ray ray, t_light light);
+float				diff_intensity(t_obj obj, float dot);
 t_rt				**launch_thread(t_rt *e);
 void				*drawline(void *arg);
+t_ray				get_reflected_ray(t_rt *e, t_ray rayon, t_vec3 poi);
 
 /*
 ** Parser
