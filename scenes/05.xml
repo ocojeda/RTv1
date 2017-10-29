@@ -13,7 +13,7 @@
 	</camera>
 
 	<objects>
-		<cylinder radius="300" shine="1">
+		<cylinder radius="300" diff="0.4" spec="1">
 			<pos x="0" y="200" z="0"/>
 			<normal x="0" y="1" z="0"/>
 			<color r="0" g="200" b="0"/>
