@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<scene width="1000" height="1000" ambient="0">
+	<lights>
+		<light intensity="0.5">
+		    <pos x="0" y="0" z="0"/>
+			<color r="255" g="0" b="0"/>
+		</light>
+		<light intensity="0.5">
+		    <pos x="-500" y="0" z="0"/>
+			<color r="255" g="0" b="0"/>
+		</light>
+		<light intensity="0.5">
+		    <pos x="500" y="0" z="0"/>
+			<color r="255" g="0" b="0"/>
+		</light>
+	</lights>
+
+	<camera>
+		<pos x="0" y="0" z="-1000"/>
+		<dir x="500" y="500" z="0"/>
+	</camera>
+
+	<objects>
+		<cylinder radius="50" diff="0.4" spec="1">
+			<pos x="400" y="0" z="300"/>
+			<normal x="0" y="1" z="0"/>
+			<color r="185" g="191" b="185"/>
+		</cylinder>
+
+		<cylinder radius="50" diff="0.4" spec="1">
+			<pos x="-400" y="0" z="300"/>
+			<normal x="0" y="1" z="0"/>
+			<color r="185" g="191" b="185"/>
+		</cylinder>
+
+		<cylinder radius="50" diff="0.4" spec="1">
+			<pos x="400" y="0" z="1000"/>
+			<normal x="0" y="1" z="0"/>
+			<color r="185" g="191" b="185"/>
+		</cylinder>
+
+		<cylinder radius="50" diff="0.4" spec="1">
+			<pos x="-400" y="0" z="1000"/>
+			<normal x="0" y="1" z="0"/>
+			<color r="185" g="191" b="185"/>
+		</cylinder>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="400" y="300" z="300"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="-400" y="-300" z="300"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="400" y="300" z="1000"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="-400" y="-300" z="1000"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="400" y="-300" z="300"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="-400" y="300" z="300"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="400" y="-300" z="1000"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="100" diff="0.4" spec="1">
+			<pos x="-400" y="300" z="1000"/>
+			<color r="185" g="191" b="185"/>
+		</sphere>
+
+		<sphere radius="75" diff="0.4" spec="1">
+			<pos x="0" y="-200" z="500"/>
+			<color r="255" g="0" b="0"/>
+		</sphere>
+
+		<plane spec="1" diff="0.4">
+			<pos x="500" y="500" z="5000"/>
+			<normal x="0" y="0" z="-1"/>
+			<color r="39" g="130" b="249"/>
+		</plane>
+
+		<plane spec="1" diff="0.4">
+			<pos x="500" y="300" z="1000"/>
+			<normal x="0" y="-1" z="0"/>
+			<color r="42" g="54" b="68"/>
+		</plane>
+
+		<plane spec="1" diff="0.4">
+			<pos x="500" y="-300" z="300"/>
+			<normal x="0" y="1" z="0"/>
+			<color r="42" g="54" b="68"/>
+		</plane>
+	</objects>
+</scene>
