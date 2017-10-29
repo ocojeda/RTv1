@@ -40,37 +40,52 @@ float			obj_isnt_in_shadow(t_rt *e, t_vec3 poi, t_light *light)
 	return (opac);
 }
 
-float			intensity_obj(t_rt *e, t_vec3 poi, t_obj obj, t_light light)
+float		diff_intensity(t_obj obj, float dot, t_light light)
+{
+	float	intensity;
+
+	if (obj.mat.diff == 0)
+		return (0);
+	intensity = light.intensity;
+	intensity *= dot;
+	return ((intensity < 0) ? 0 : intensity);
+}
+
+float		spec_intensity(t_obj obj, t_ray light, t_vec3 norm, float dot)
+{
+	float	intensity;
+	t_vec3	refl;
+
+	(void)obj;
+	//if (obj.mat.spec == 0)
+	//	return (0);
+	refl = vec_sub3(light.dir, vec_inv3(vec_scale3(norm, dot)));
+	intensity = vec_dot3(light.dir, refl) * obj.mat.diff;
+	//while(intensity > 1)
+	//	intensity/=2;
+	intensity = ft_map(intensity, 2, 0, 1);
+//	intensity = ft_map(intensity, 2, 0, 0.1);
+	return intensity;
+}
+
+float		intensity_obj(t_rt *e, t_vec3 poi, t_obj obj, t_light light)
 {
 	float	intensity;
 	t_vec3	norm;
 	float	transp;
 	float	dot;
-	t_vec3	refl;
 
 	intensity = 0;
 	transp = 0;
 	light.ray.dir = vec_norme3(vec_sub3(light.ray.pos, poi));
 	norm = color_norm(obj, poi, vec_sub3(e->scene.cam.pos, poi));
 	if ((dot = vec_dot3(light.ray.dir, norm)) > 0
-	&& (transp = obj_isnt_in_shadow(e, poi, &light)))
+		&& (transp = obj_isnt_in_shadow(e, poi, &light)))
 	{
-		refl = vec_scale3(norm, 2 * dot);
-		refl = vec_sub3(light.ray.dir, refl);
-		intensity = vec_dot3(vec_scale3(light.ray.dir, -1), refl);
-		if (intensity < 0)
-			intensity = 0;
-		intensity = pow(intensity, (light.intensity)) * (obj.mat.diff);
+		intensity = diff_intensity(obj, dot, light);
+		intensity += spec_intensity(obj, light.ray, norm, dot);
+	//	
+	//intensity += pow(intensity, spec_intensity(obj, light.ray, norm, dot));
 	}
 	return (intensity * transp + AMBIENT_LIGHT);
-}
-
-float			diff_intensity(t_obj obj, float dot)
-{
-	float	intensity;
-
-	if (obj.mat.diff == 0)
-		return (0);
-	intensity = dot * obj.mat.diff;
-	return ((intensity < 0) ? 0 : intensity);
 }

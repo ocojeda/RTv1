@@ -293,7 +293,7 @@ t_vec3				sphere_norm(t_obj obj, t_vec3 poi);
 t_vec3				cylinder_norm(t_obj obj, t_vec3 poi);
 float				intensity_obj(t_rt *e, t_vec3 poi,
 						t_obj obj, t_light light);
-float				diff_intensity(t_obj obj, float dot);
+float				diff_intensity(t_obj obj, float dot, t_light light);
 t_rt				**launch_thread(t_rt *e);
 void				*drawline(void *arg);
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<scene width="1000" height="1000" ambient="0">
+	<lights>
+		<light intensity="1">
+		    <pos x="-400" y="0" z="-600"/>
+			<color r="255" g="0" b="0"/>
+		</light>
+	</lights>
+	<camera>
+		<pos x="0" y="0" z="-1000"/>
+		<dir x="500" y="600" z="0"/>
+	</camera>
+
+	<objects>
+		<sphere radius="300" shine="1">
+			<pos x="0" y="200" z="0"/>
+			<color r="255" g="0" b="0"/>
+		</sphere>
+	</objects>
+</scene>
