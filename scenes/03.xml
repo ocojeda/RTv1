@@ -22,7 +22,7 @@
 	</camera>
 
 	<objects>
-		<plane spec="1" diff="0.8">
+		<plane spec="1" diff="0.4">
 			<pos x="0" y="-200" z="1500" />
 			<normal x="0.5" y="1" z="0"/>
 			<color r="15" g="200" b="100"/>
@@ -34,7 +34,7 @@
 			<color r="150" g="255" b="255"/>
 		</cylinder>
 
-		<cone angle="0.1" spec="1" diff="0.8">
+		<cone angle="0.1" spec="1" diff="0.4">
 			<pos x="0" y="0" z="300" />
 			<normal x="0.5" y="1" z="0"/>
 			<color r="100" g="15" b="100"/>
@@ -45,7 +45,7 @@
 			<color r="0" g="0" b="255"/>
 		</sphere>
 
-		<sphere radius="100" spec="1" diff="0.6">
+		<sphere radius="100" spec="1" diff="0.4">
 			<pos x="-500" y="0" z="300"/>
 			<color r="255" g="0" b="0"/>
 		</sphere>
